@@ -6,6 +6,14 @@ from django.contrib import messages
 
 # Create your views here.
 
+@login_required(login_url='/accounts/login/')
+def home(request):
+    products = Products.objects.all()
+    context = {
+    "products":products,
+    }
+    return render(request, 'index.html', locals())
+
 def registration(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
