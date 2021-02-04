@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap4',
     'salesapp',
+    'star_ratings',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
