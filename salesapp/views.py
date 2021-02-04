@@ -78,3 +78,28 @@ def updateprofile(request):
     }
 
     return render(request, 'profile/update_profile.html', context)
+
+
+@login_required(login_url='/accounts/login/')
+def postproduct(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.author = current_user
+            product.save()
+        return redirect('/')
+    else:
+        form = ProductForm()
+    context = {
+        'form':form,
+    }
+    return render(request, 'PostProduct.html', context)
+
+@login_required(login_url='/accounts/login/')
+def get_product(request, id):
+    product = Products.objects.get(pk=id)
+
+    return render(request, 'product.html', {'product':product})
+
