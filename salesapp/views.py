@@ -103,3 +103,15 @@ def get_product(request, id):
 
     return render(request, 'product.html', {'product':product})
 
+@login_required(login_url='/accounts/login/')
+def search_products(request):
+    if 'project' in request.GET and request.GET['product']:
+        search_term = request.GET["product"]
+        searched_products = Products.search_products(search_term)
+        message = f"{search_term}"
+        
+        return render(request, 'search.html', {"message":message, "products": searched_products})
+    else:
+        message = "You haven't searched for any user"
+
+        return render(request, 'search.html', {"message":message})
