@@ -22,3 +22,9 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image', 'bio']
+
+class ProductForm(forms.ModelForm):
+
+    class Meta:
+        model= Products
+        exclude= ['size', 'date_added', 'quantity']
