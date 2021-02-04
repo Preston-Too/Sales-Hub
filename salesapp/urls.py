@@ -12,6 +12,10 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     path('accounts/profile/', views.profile, name='profile'),
     path('updateprofile/', views.updateprofile, name='updateprofile'),
+    path('new-product/', views.postproduct, name='newproduct'),
+    path('product/<id>', views.get_product, name='product'),
+    path('search/', views.search_products, name='search_products'),
+    path(r'ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
