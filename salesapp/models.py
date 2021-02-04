@@ -33,3 +33,25 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+
+class Products(models.Model):
+    item_name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.IntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    image = CloudinaryField('image')
+    quantity = models.IntegerField(default=0)
+    color = models.CharField(max_length=100, blank=True, null=True)
+    size = models.CharField(max_length=100, blank=True)
+    brand = models.CharField(max_length=100, blank=True)
+  
+
+    def __str__(self):
+        return self.item_name
+
+    def save_product(self):
+        self.save()
+
+    def delete_product(self):
+        self.delete()
