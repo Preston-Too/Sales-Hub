@@ -105,7 +105,7 @@ def get_product(request, id):
 
 @login_required(login_url='/accounts/login/')
 def search_products(request):
-    if 'project' in request.GET and request.GET['product']:
+    if 'products' in request.GET and request.GET['product']:
         search_term = request.GET["product"]
         searched_products = Products.search_products(search_term)
         message = f"{search_term}"

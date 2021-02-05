@@ -38,7 +38,7 @@ class Profile(models.Model):
 class Products(models.Model):
     item_name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.IntegerField()
+    price = models.CharField(max_length=100)
     date_added = models.DateTimeField(auto_now_add=True)
     image = CloudinaryField('image')
     quantity = models.IntegerField(default=0)
